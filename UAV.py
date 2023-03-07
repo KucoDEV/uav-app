@@ -1,5 +1,5 @@
 # Fait par "Mathéo PICHOT-MOÏSE" alias "Kuco"
-# Version actuelle: 1.7
+# Version actuelle: 1.8
 # https://github.com/KucoDEV
 # (c) Copyright, KucoDEV 2022-2023
 
@@ -20,7 +20,7 @@ def login():
                     stats.destroy()
                         
                 stats = Tk()
-                stats.title("U.A.V. - Statistique")
+                stats.overrideredirect(True)
                 w, h = stats.winfo_screenwidth(), stats.winfo_screenheight()
                 stats.geometry("%dx%d" % (w, h))
                 stats.resizable(False, False)
@@ -46,7 +46,7 @@ def login():
                         confirm.destroy()
                     
                     confirm = Tk()
-                    confirm.title("U.A.V. - Confirmation")
+                    confirm.overrideredirect(True)
                     confirm.geometry("500x100")
                         
                     boite = Frame(confirm)
@@ -83,7 +83,7 @@ def login():
                     new.destroy()
 
                 new = Tk()
-                new.title("U.A.V. - Nouveau vol")
+                new.overrideredirect(True)
                 w, h = new.winfo_screenwidth(), new.winfo_screenheight()
                 new.geometry("%dx%d" % (w, h))
                 new.resizable(False, False)
@@ -142,7 +142,7 @@ def login():
                     list.destroy()
                     
                 list = Tk()
-                list.title("U.A.V. - Listes des utilisateurs")
+                list.overrideredirect(True)
                 w, h = list.winfo_screenwidth(), list.winfo_screenheight()
                 list.geometry("%dx%d" % (w, h))
                 list.resizable(False, False)
@@ -199,7 +199,7 @@ def login():
                 root.destroy()
 
             root = Tk()
-            root.title("U.A.V.")
+            root.overrideredirect(True)
             w, h = root.winfo_screenwidth(), root.winfo_screenheight()
             root.geometry("%dx%d" % (w, h))
             root.resizable(False, False)
@@ -250,7 +250,7 @@ def login():
     
     global login_screen
     login_screen = Tk()
-    login_screen.title("U.A.V. - Se connecter")
+    login_screen.overrideredirect(True)
     login_screen.geometry("300x250")
     login_screen.resizable(False, False)
     Label(text="\n\n\n\n\n\n\n\n\n\n\n\n\n")
@@ -280,7 +280,7 @@ def login():
 def password_not_recognised():
     global password_not_recog_screen
     password_not_recog_screen = Tk()
-    password_not_recog_screen.title("U.A.V. - Erreur")
+    password_not_recog_screen.overrideredirect(True)
     password_not_recog_screen.geometry("150x100")
     password_not_recog_screen.resizable(False, False)
     Label(password_not_recog_screen, text="Mauvais mot de passe ").pack()
@@ -290,7 +290,7 @@ def password_not_recognised():
 def user_not_found():
     global user_not_found_screen
     user_not_found_screen = Tk()
-    user_not_found_screen.title("U.A.V. - Erreur")
+    user_not_found_screen.overrideredirect(True)
     user_not_found_screen.geometry("150x100")
     user_not_found_screen.resizable(False, False)
     Label(user_not_found_screen, text="Identifiant non trouver").pack()
@@ -312,7 +312,7 @@ def main_account_screen():
     main_screen = Tk()
     main_screen.geometry("250x150")
     main_screen.resizable(False, False)
-    main_screen.title("U.A.V. - Connection")
+    main_screen.overrideredirect(True)
     Label(text="\n\n\n\n\n\n\n\n\n\n\n\n\n")
     Label(text="Bienvenue sur l'application", fg="blue", width="300", font=("Calibri", 13)).pack()
     Label(text="Veuillez choisir votre direction", fg="blue", width="300", font=("Calibri", 13)).pack()

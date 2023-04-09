@@ -1,5 +1,5 @@
 # Fait par "Mathéo PICHOT-MOÏSE" alias "Kuco"
-# Version actuelle: 1.8.6.2
+# Version actuelle: 1.8.6.3
 # https://github.com/KucoDEV
 # (c) Copyright, KucoDEV 2022-2023
 # Required PIP packages: requests, tkcalendar
@@ -177,7 +177,7 @@ def login():
                 pb = Label(framenew, text="% de batterie restant").grid(row=7, column=0)
                 entry_f = Entry(framenew)
                 entry_f.grid(row=7, column=1)
-                drr = Label(framenew, text="Format: 50%").grid(row=5, column=2)
+                drr = Label(framenew, text="Format: 50%").grid(row=7, column=2)
 
                 pb = Label(framenew, text="Nombre de cycle").grid(row=8, column=0)
                 entry_g = Entry(framenew)

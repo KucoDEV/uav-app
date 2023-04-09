@@ -11,7 +11,37 @@ import csv
 import requests
 
 def login():
-    delete_main_screen()
+    def connect():
+        global login_screen
+        login_screen = Tk()
+        login_screen.overrideredirect(True)
+        login_screen.geometry("300x250")
+        login_screen.resizable(False, False)
+        Label(text="\n\n\n\n\n\n\n\n\n\n\n\n\n")
+        Label(login_screen, text="Mettre les informations de votre compte").pack()
+        Label(login_screen, text="").pack()
+ 
+        global username_verify
+        global password_verify
+ 
+        username_verify = StringVar()
+        password_verify = StringVar()
+ 
+        global username_login_entry
+        global password_login_entry
+ 
+        Label(login_screen, text="Identifiant").pack()
+        username_login_entry = Entry(login_screen, textvariable=username_verify)
+        username_login_entry.pack()
+        Label(login_screen, text="").pack()
+        Label(login_screen, text="Mot de passe").pack()
+        password_login_entry = Entry(login_screen, textvariable=password_verify, show= '*')
+        password_login_entry.pack()
+        Label(login_screen, text="").pack() 
+        Button(login_screen, text="Se connecter", width=10, height=1, command = login_verify).pack()
+
+        login_screen.mainloop()
+
     def login_verify():        
         def uav():
             login_screen.destroy()
@@ -276,33 +306,7 @@ def login():
         else:
             password_not_recognised()
     
-    global login_screen
-    login_screen = Tk()
-    login_screen.overrideredirect(True)
-    login_screen.geometry("300x250")
-    login_screen.resizable(False, False)
-    Label(text="\n\n\n\n\n\n\n\n\n\n\n\n\n")
-    Label(login_screen, text="Mettre les informations de votre compte").pack()
-    Label(login_screen, text="").pack()
- 
-    global username_verify
-    global password_verify
- 
-    username_verify = StringVar()
-    password_verify = StringVar()
- 
-    global username_login_entry
-    global password_login_entry
- 
-    Label(login_screen, text="Identifiant").pack()
-    username_login_entry = Entry(login_screen, textvariable=username_verify)
-    username_login_entry.pack()
-    Label(login_screen, text="").pack()
-    Label(login_screen, text="Mot de passe").pack()
-    password_login_entry = Entry(login_screen, textvariable=password_verify, show= '*')
-    password_login_entry.pack()
-    Label(login_screen, text="").pack() 
-    Button(login_screen, text="Se connecter", width=10, height=1, command = login_verify).pack()
+    connect()
 
  
 def password_not_recognised():
@@ -331,23 +335,5 @@ def delete_password_not_recognised():
  
 def delete_user_not_found_screen():
     user_not_found_screen.destroy()
-
-def delete_main_screen():
-    main_screen.destroy()
  
-def main_account_screen():
-    global main_screen
-    main_screen = Tk()
-    main_screen.geometry("250x150")
-    main_screen.resizable(False, False)
-    main_screen.overrideredirect(True)
-    Label(text="\n\n\n\n\n\n\n\n\n\n\n\n\n")
-    Label(text="Bienvenue sur l'application", fg="blue", width="300", font=("Calibri", 13)).pack()
-    Label(text="Veuillez choisir votre direction", fg="blue", width="300", font=("Calibri", 13)).pack()
-    Label(text="").pack()
-    Button(text="Se connecter", height="2", width="30", command=login).pack()
-    Label(text="").pack()
- 
-    main_screen.mainloop()
- 
-main_account_screen()
+login()

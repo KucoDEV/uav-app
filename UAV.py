@@ -1,5 +1,5 @@
 # Fait par "Mathéo PICHOT-MOÏSE" alias "Kuco"
-# Version actuelle: 1.8.6
+# Version actuelle: 1.8.6.2
 # https://github.com/KucoDEV
 # (c) Copyright, KucoDEV 2022-2023
 # Required PIP packages: requests, tkcalendar
@@ -166,8 +166,9 @@ def login():
                 entry_dd.grid(row=4, column=1)
 
                 dr = Label(framenew, text="Temps de vol").grid(row=5, column=0)
-                entry_c = Entry(framenew)
-                entry_c.grid(row=5, column=1)
+                entry_c1 = Entry(framenew)
+                entry_c1.grid(row=5, column=1)
+                drr = Label(framenew, text="Format: 1h2m3s").grid(row=5, column=2)
 
                 ba = Label(framenew, text="Numéro de la batterie").grid(row=6, column=0)
                 entry_e = Entry(framenew)
@@ -176,6 +177,7 @@ def login():
                 pb = Label(framenew, text="% de batterie restant").grid(row=7, column=0)
                 entry_f = Entry(framenew)
                 entry_f.grid(row=7, column=1)
+                drr = Label(framenew, text="Format: 50%").grid(row=5, column=2)
 
                 pb = Label(framenew, text="Nombre de cycle").grid(row=8, column=0)
                 entry_g = Entry(framenew)

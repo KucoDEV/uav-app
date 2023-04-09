@@ -1,13 +1,12 @@
 # Fait par "Mathéo PICHOT-MOÏSE" alias "Kuco"
-# Version actuelle: 1.8.1
+# Version actuelle: 1.8.2
 # https://github.com/KucoDEV
 # (c) Copyright, KucoDEV 2022-2023
+# Required PIP packages: requests
 
-from datetime import datetime
 from tkinter import ttk
 from tkinter import *
 import csv
-import os
 import requests
 
 def login():
@@ -31,7 +30,7 @@ def login():
                 stats.config(menu=menubar)
                 menufichier = Menu(menubar,tearoff=0)
                 menubar.add_cascade(label="Navigation", menu=menufichier)
-                menufichier.add_command(label="Retour", accelerator="CTRL+R", command=leave)
+                menufichier.add_command(label="Retour", command=leave)
                 menufichier.bind_all("<Control-r>", lambda x: leave())
 
                 ent = Label(framestats, text="Vol d'entainement").grid(row=1, column=1)
@@ -95,7 +94,7 @@ def login():
                 new.config(menu=menubar)
                 menufichier = Menu(menubar,tearoff=0)
                 menubar.add_cascade(label="Navigation", menu=menufichier)
-                menufichier.add_command(label="Retour", accelerator="CTRL+R", command=leave)
+                menufichier.add_command(label="Retour", command=leave)
                 menufichier.bind_all("<Control-r>", lambda x: leave())
                         
                 da = Label(framenew, text="Date").grid(row=1, column=0)
@@ -113,27 +112,44 @@ def login():
                 entry_bb.grid(row=2, column=1)
 
                 dr = Label(framenew, text="Type de vol").grid(row=3, column=0)
+                entry_d = StringVar()
+                entry_dd = ttk.Combobox(framenew, textvariable=entry_d)
+                entry_dd['values'] = ("Entraînement", 
+                            "Opération",
+                            "Autres")
+                entry_dd['state'] = 'readonly'
+                entry_dd.current(0) 
+                entry_dd.bind('<<ComboboxSelected>>')
+                entry_dd.grid(row=3, column=1)
+
+                dr = Label(framenew, text="Sous-type de vol").grid(row=4, column=0)
+                entry_d = StringVar()
+                entry_dd = ttk.Combobox(framenew, textvariable=entry_d)
+                entry_dd['values'] = ("Ordre publique", 
+                            "Anti-Crim")
+                entry_dd['state'] = 'readonly'
+                entry_dd.current(0) 
+                entry_dd.bind('<<ComboboxSelected>>')
+                entry_dd.grid(row=4, column=1)
+
+                dr = Label(framenew, text="Temps de vol").grid(row=5, column=0)
                 entry_c = Entry(framenew)
-                entry_c.grid(row=3, column=1)
+                entry_c.grid(row=5, column=1)
 
-                dr = Label(framenew, text="Temps de vol").grid(row=4, column=0)
-                entry_d = Entry(framenew)
-                entry_d.grid(row=4, column=1)
-
-                ba = Label(framenew, text="Numéro de la batterie").grid(row=5, column=0)
+                ba = Label(framenew, text="Numéro de la batterie").grid(row=6, column=0)
                 entry_e = Entry(framenew)
-                entry_e.grid(row=5, column=1)
+                entry_e.grid(row=6, column=1)
 
-                pb = Label(framenew, text="% de batterie restant").grid(row=6, column=0)
+                pb = Label(framenew, text="% de batterie restant").grid(row=7, column=0)
                 entry_f = Entry(framenew)
-                entry_f.grid(row=6, column=1)
+                entry_f.grid(row=7, column=1)
 
-                pb = Label(framenew, text="Nombre de cycle").grid(row=7, column=0)
+                pb = Label(framenew, text="Nombre de cycle").grid(row=8, column=0)
                 entry_g = Entry(framenew)
-                entry_g.grid(row=7, column=1)
+                entry_g.grid(row=8, column=1)
 
                 send = Button(framenew, text="Envoyer", command=confirm)
-                send.grid(row=8, column=0, columnspan=2, pady=20)
+                send.grid(row=9, column=0, columnspan=2, pady=20)
 
                 framenew.pack(expand=YES)
 
@@ -159,7 +175,7 @@ def login():
                 list.config(menu=menubar)
                 menufichier = Menu(menubar,tearoff=0)
                 menubar.add_cascade(label="Navigation", menu=menufichier)
-                menufichier.add_command(label="Retour", accelerator="CRTL+R", command=leave)
+                menufichier.add_command(label="Retour", command=leave)
                 menufichier.bind_all("<Control-r>", lambda x: leave())
 
                 clent = StringVar()
@@ -212,10 +228,10 @@ def login():
             menubar = Menu(root)
 
             menufichier = Menu(menubar,tearoff=0)
-            menufichier.add_command(label="Statistiques", accelerator="CTRL+S", command=load_stats)
-            menufichier.add_command(label="Nouveau", accelerator="CTRL+T", command=load_new)
+            menufichier.add_command(label="Statistiques", command=load_stats)
+            menufichier.add_command(label="Nouveau", command=load_new)
             menufichier.add_separator()
-            menufichier.add_command(label="Quitter", accelerator="CTRL+E", command=leave)
+            menufichier.add_command(label="Quitter", command=leave)
             menubar.add_cascade(label="Navigation", menu=menufichier)
 
             menubar.bind_all("<Control-s>", lambda x: load_stats())
@@ -226,7 +242,7 @@ def login():
 
             if perm == "admin":
                 menuadm = Menu(menubar,tearoff=0)
-                menuadm.add_command(label="Tout les utilisateurs", accelerator="CTRL+A", command=list_users)
+                menuadm.add_command(label="Tout les utilisateurs", command=list_users)
                 menubar.bind_all("<Control-a>", lambda x: list_users())
                 menubar.add_cascade(label="Administration", menu=menuadm)
 

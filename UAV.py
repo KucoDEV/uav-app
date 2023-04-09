@@ -1,5 +1,5 @@
 # Fait par "Mathéo PICHOT-MOÏSE" alias "Kuco"
-# Version actuelle: 1.8
+# Version actuelle: 1.8.1
 # https://github.com/KucoDEV
 # (c) Copyright, KucoDEV 2022-2023
 
@@ -31,8 +31,9 @@ def login():
                 stats.config(menu=menubar)
                 menufichier = Menu(menubar,tearoff=0)
                 menubar.add_cascade(label="Navigation", menu=menufichier)
-                menufichier.add_command(label="Retour", command=leave)
-                        
+                menufichier.add_command(label="Retour", accelerator="CTRL+R", command=leave)
+                menufichier.bind_all("<Control-r>", lambda x: leave())
+
                 ent = Label(framestats, text="Vol d'entainement").grid(row=1, column=1)
                 ope = Label(framestats, text="Vol d'opération").grid(row=2, column=1)
 
@@ -94,7 +95,8 @@ def login():
                 new.config(menu=menubar)
                 menufichier = Menu(menubar,tearoff=0)
                 menubar.add_cascade(label="Navigation", menu=menufichier)
-                menufichier.add_command(label="Retour", command=leave)
+                menufichier.add_command(label="Retour", accelerator="CTRL+R", command=leave)
+                menufichier.bind_all("<Control-r>", lambda x: leave())
                         
                 da = Label(framenew, text="Date").grid(row=1, column=0)
                 entry_a = Entry(framenew)
@@ -157,7 +159,8 @@ def login():
                 list.config(menu=menubar)
                 menufichier = Menu(menubar,tearoff=0)
                 menubar.add_cascade(label="Navigation", menu=menufichier)
-                menufichier.add_command(label="Retour", command=leave)
+                menufichier.add_command(label="Retour", accelerator="CRTL+R", command=leave)
+                menufichier.bind_all("<Control-r>", lambda x: leave())
 
                 clent = StringVar()
                 lnent = StringVar()
@@ -209,17 +212,22 @@ def login():
             menubar = Menu(root)
 
             menufichier = Menu(menubar,tearoff=0)
-            menufichier.add_command(label="Statistiques", command=load_stats)
-            menufichier.add_command(label="Nouveau", command=load_new)
+            menufichier.add_command(label="Statistiques", accelerator="CTRL+S", command=load_stats)
+            menufichier.add_command(label="Nouveau", accelerator="CTRL+T", command=load_new)
             menufichier.add_separator()
-            menufichier.add_command(label="Quitter", command=leave)
+            menufichier.add_command(label="Quitter", accelerator="CTRL+E", command=leave)
             menubar.add_cascade(label="Navigation", menu=menufichier)
+
+            menubar.bind_all("<Control-s>", lambda x: load_stats())
+            menubar.bind_all("<Control-t>", lambda x: load_new())
+            menubar.bind_all("<Control-e>", lambda x: leave())
 
             perm = data['perm']
 
             if perm == "admin":
                 menuadm = Menu(menubar,tearoff=0)
-                menuadm.add_command(label="Tout les utilisateurs", command=list_users)
+                menuadm.add_command(label="Tout les utilisateurs", accelerator="CTRL+A", command=list_users)
+                menubar.bind_all("<Control-a>", lambda x: list_users())
                 menubar.add_cascade(label="Administration", menu=menuadm)
 
             root.config(menu=menubar)

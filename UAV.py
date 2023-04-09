@@ -1,5 +1,5 @@
 # Fait par "Mathéo PICHOT-MOÏSE" alias "Kuco"
-# Version actuelle: 1.8.8
+# Version actuelle: 1.8.9
 # https://github.com/KucoDEV
 # (c) Copyright, KucoDEV 2022-2023
 # Required PIP packages: requests, tkcalendar
@@ -81,39 +81,43 @@ def login():
 
             def load_new():
                 def confirm():
+                    global confirme
                     def annuler():
                         confirm.destroy()
                     
-                    confirm = Tk()
-                    confirm.overrideredirect(True)
+                    confirme = Tk()
+                    confirme.overrideredirect(True)
                     w, h = new.winfo_screenwidth(), new.winfo_screenheight()
-                    confirm.geometry("%dx%d" % (w, h))
+                    confirme.geometry("%dx%d" % (w, h))
                         
-                    boite = Frame(confirm)
+                    boite = Frame(confirme)
 
                     Label(boite, text="Voulez vous vraiment envoyer les données de vol ?").pack()
                     Button(boite, text="Envoyer", command=envoyer).pack()
                     Button(boite, text="Annuler", command=annuler).pack()
 
                     boite.pack(expand=YES)
-                    confirm.mainloop()
+                    confirme.mainloop()
 
                 def envoyer():
-                    confirm.destroy()
-                    a = cal.get_date()
-                    b = entry_bb.get()
-                    c = entry_c.get()
-                    d = entry_d.get()
-                    e = entry_e.get()
-                    f = entry_f.get()
-                    g = entry_g.get()
+                    confirme.destroy()
+                    a = cal.get_date()# date
+                    b = entry_bb.get()#num drone
+                    c = entry_dd.get()#type
+                    d = entry_cc.get()#sous-type
+                    y = entry_y.get()#temps
+                    e = entry_e.get()#num batterie
+                    f = entry_f.get()#%
+                    g = entry_g.get()#cycle
 
-                    nom_colonnes =['Date','Drone','Type','Temps','Batterie','%Batterie','Cycle']
+                    print(a + "\n" + b + "\n" + c + "\n" + d + "\n" + y + "\n" + e + "\n" + f + "\n" + g)
+
+                    nom_colonnes =['Date','Drone','Type', 'Sous-type', 'Temps','Batterie','%Batterie','Cycle']
                     fichier = open('données.csv', 'a', newline='\n', encoding='utf-8')
                     try:
                         with fichier:    
                             file = csv.DictWriter(fichier, fieldnames=nom_colonnes)
-                            file.writerow({'Date': f'{a}','Drone': f'{b}', 'Type': f'{c}','Temps': f'{d}', 'Batterie': f'{e}','%Batterie': f'{f}%','Cycle': f'{g}'})
+                            file.writerow({'Date': f'{a}','Drone': f'{b}', 'Type': f'{c}', 'Sous-type': f'{d}','Temps': f'{y}', 'Batterie': f'{e}','%Batterie': f'{f}%','Cycle': f'{g}'})
                             oui = Label(framenew, text="Les données ont bien été envoyer !", fg="green")
                             oui.grid(row=9, column=1, columnspan=2)
                     except:
@@ -166,18 +170,18 @@ def login():
                 entry_dd.grid(row=4, column=1)
 
                 dr = Label(framenew, text="Sous-type de vol").grid(row=5, column=0)
-                entry_d = StringVar()
-                entry_dd = ttk.Combobox(framenew, textvariable=entry_d)
-                entry_dd['values'] = ("Ordre publique", 
+                entry_c = StringVar()
+                entry_cc = ttk.Combobox(framenew, textvariable=entry_c)
+                entry_cc['values'] = ("Ordre publique", 
                             "Anti-Crim")
-                entry_dd['state'] = 'readonly'
-                entry_dd.current(0) 
-                entry_dd.bind('<<ComboboxSelected>>')
-                entry_dd.grid(row=5, column=1)
+                entry_cc['state'] = 'readonly'
+                entry_cc.current(0) 
+                entry_cc.bind('<<ComboboxSelected>>')
+                entry_cc.grid(row=5, column=1)
 
                 dr = Label(framenew, text="Temps de vol").grid(row=6, column=0)
-                entry_c1 = Entry(framenew)
-                entry_c1.grid(row=6, column=1)
+                entry_y = Entry(framenew)
+                entry_y.grid(row=6, column=1)
                 drr = Label(framenew, text="Format: 1h2m3s").grid(row=6, column=2)
 
                 ba = Label(framenew, text="Numéro de la batterie").grid(row=7, column=0)

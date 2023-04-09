@@ -1,5 +1,5 @@
 # Fait par "Mathéo PICHOT-MOÏSE" alias "Kuco"
-# Version actuelle: 1.8.3
+# Version actuelle: 1.8.4
 # https://github.com/KucoDEV
 # (c) Copyright, KucoDEV 2022-2023
 # Required PIP packages: requests, tkcalendar
@@ -48,7 +48,8 @@ def login():
                     
                     confirm = Tk()
                     confirm.overrideredirect(True)
-                    confirm.geometry("500x100")
+                    w, h = new.winfo_screenwidth(), new.winfo_screenheight()
+                    confirm.geometry("%dx%d" % (w, h))
                         
                     boite = Frame(confirm)
 

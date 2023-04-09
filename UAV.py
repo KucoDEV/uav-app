@@ -1,5 +1,5 @@
 # Fait par "Mathéo PICHOT-MOÏSE" alias "Kuco"
-# Version actuelle: 1.8.4
+# Version actuelle: 1.8.5
 # https://github.com/KucoDEV
 # (c) Copyright, KucoDEV 2022-2023
 # Required PIP packages: requests, tkcalendar
@@ -61,6 +61,7 @@ def login():
                     confirm.mainloop()
 
                 def envoyer():
+                    confirm.destroy()
                     a = cal.get_date()
                     b = entry_bb.get()
                     c = entry_c.get()

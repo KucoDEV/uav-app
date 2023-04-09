@@ -1,5 +1,5 @@
 # Fait par "Mathéo PICHOT-MOÏSE" alias "Kuco"
-# Version actuelle: 1.8.7
+# Version actuelle: 1.8.8
 # https://github.com/KucoDEV
 # (c) Copyright, KucoDEV 2022-2023
 # Required PIP packages: requests, tkcalendar
@@ -12,6 +12,7 @@ import requests
 
 def login():
     def connect():
+        ddd()
         global login_screen
         login_screen = Tk()
         login_screen.overrideredirect(True)
@@ -42,8 +43,15 @@ def login():
 
         login_screen.mainloop()
 
+    def ddd():
+        try:
+            root.destroy()
+        except:
+            pass
+
     def login_verify():        
         def uav():
+            global root
             login_screen.destroy()
             def load_stats():
                 def leave():
@@ -268,7 +276,7 @@ def login():
             menufichier.add_command(label="Statistiques", command=load_stats)
             menufichier.add_command(label="Nouveau", command=load_new)
             menufichier.add_separator()
-            menufichier.add_command(label="Déconnexion", command=leave)
+            menufichier.add_command(label="Déconnexion", command=connect)
             menufichier.add_command(label="Quitter", command=leave)
             menubar.add_cascade(label="Navigation", menu=menufichier)
 

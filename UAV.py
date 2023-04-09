@@ -100,7 +100,7 @@ def login():
                         
                 da = Label(framenew, text="Date").grid(row=1, column=0)
                 cal = Calendar(framenew, selectmode="day", year=2023, month=4, day=9)
-                cal.pack(pady=20)
+                cal.grid(row=1, column=1)
 
                 dr = Label(framenew, text="Numéro de drone").grid(row=2, column=0)
                 entry_b = StringVar()

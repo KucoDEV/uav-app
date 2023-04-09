@@ -1,11 +1,12 @@
 # Fait par "Mathéo PICHOT-MOÏSE" alias "Kuco"
-# Version actuelle: 1.8.2
+# Version actuelle: 1.8.3
 # https://github.com/KucoDEV
 # (c) Copyright, KucoDEV 2022-2023
-# Required PIP packages: requests
+# Required PIP packages: requests, tkcalendar
 
 from tkinter import ttk
 from tkinter import *
+from tkcalendar import *
 import csv
 import requests
 
@@ -59,7 +60,7 @@ def login():
                     confirm.mainloop()
 
                 def envoyer():
-                    a = entry_a.get()
+                    a = cal.get_date()
                     b = entry_bb.get()
                     c = entry_c.get()
                     d = entry_d.get()
@@ -98,8 +99,8 @@ def login():
                 menufichier.bind_all("<Control-r>", lambda x: leave())
                         
                 da = Label(framenew, text="Date").grid(row=1, column=0)
-                entry_a = Entry(framenew)
-                entry_a.grid(row=1, column=1)
+                cal = Calendar(framenew, selectmode="day", year=2023, month=4, day=9)
+                cal.pack(pady=20)
 
                 dr = Label(framenew, text="Numéro de drone").grid(row=2, column=0)
                 entry_b = StringVar()
@@ -231,6 +232,7 @@ def login():
             menufichier.add_command(label="Statistiques", command=load_stats)
             menufichier.add_command(label="Nouveau", command=load_new)
             menufichier.add_separator()
+            menufichier.add_command(label="Déconnexion", command=leave)
             menufichier.add_command(label="Quitter", command=leave)
             menubar.add_cascade(label="Navigation", menu=menufichier)
 

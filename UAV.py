@@ -1,10 +1,11 @@
 # Fait par "Mathéo PICHOT-MOÏSE" alias "Kuco"
-# Version actuelle: 1.8.9
+# Version actuelle: 1.9
 # https://github.com/KucoDEV
 # (c) Copyright, KucoDEV 2022-2023
 # Required PIP packages: requests, tkcalendar
 
 from tkinter import ttk
+from tkinter.ttk import *
 from tkinter import *
 from tkcalendar import *
 import csv
@@ -18,7 +19,7 @@ def login():
         login_screen.overrideredirect(True)
         login_screen.geometry("300x250")
         login_screen.resizable(False, False)
-        Label(text="\n\n\n\n\n\n\n\n\n\n\n\n\n").pack()
+        Label(text="\n\n\n\n\n\n\n\n\n\n\n\n\n")
         Label(login_screen, text="Mettre les informations de votre compte").pack()
         Label(login_screen, text="").pack()
  
@@ -72,8 +73,47 @@ def login():
                 menufichier.add_command(label="Retour", command=leave)
                 menufichier.bind_all("<Control-r>", lambda x: leave())
 
-                ent = Label(framestats, text="Vol d'entainement").grid(row=1, column=1)
-                ope = Label(framestats, text="Vol d'opération").grid(row=2, column=1)
+                t1 = Treeview(framestats, columns=('date', 'numdrone', 'type', 'stype'))
+
+                t2 = Treeview(framestats, columns=('temps', 'numbat', 'pourcent', 'cycle'))
+
+                t1.heading('date', text='Date (M/J/A)')
+
+                t1.heading('numdrone', text='Drone')
+
+                t1.heading('type', text='Type de vol')
+
+                t1.heading('stype', text='Sous-type de vol')
+
+                t2.heading('temps', text='Temps de vol')
+
+                t2.heading('numbat', text='Batterie')
+
+                t2.heading('pourcent', text='% de batterie restant')
+
+                t2.heading('cycle', text='Nombre de cycle')
+
+                t1['show'] = 'headings'
+
+                t2['show'] = 'headings'
+
+                with open('données.csv') as f:
+                    reader = csv.DictReader(f, delimiter=',')
+                    for column in reader:
+                        date = column['Date']
+                        numdrone = column['Drone']
+                        type = column['Type de vol']
+                        stype = column['Sous-type de vol']
+                        temps = column['Temps de vol']
+                        numbat = column['Batterie']
+                        pourcent = column['% de batterie restant']
+                        cycle = column['Nombre de cycle']
+                        t1.insert("", 0, values=(date, numdrone, type, stype))
+                        t2.insert("", 0, values=(temps, numbat, pourcent, cycle))
+
+                t1.grid(row=2, column=0)
+
+                t2.grid(row=3, column=0)
 
                 framestats.pack(expand=YES)
                         

@@ -17,7 +17,7 @@ def login():
         login_screen.overrideredirect(True)
         login_screen.geometry("300x250")
         login_screen.resizable(False, False)
-        Label(text="\n\n\n\n\n\n\n\n\n\n\n\n\n")
+        Label(text="\n\n\n\n\n\n\n\n\n\n\n\n\n").pack()
         Label(login_screen, text="Mettre les informations de votre compte").pack()
         Label(login_screen, text="").pack()
  

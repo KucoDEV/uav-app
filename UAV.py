@@ -3,7 +3,7 @@
 # (c) Copyright, KucoDEV 2022-2023
 # Required PIP packages: requests, tkcalendar
 
-version = "1.9.7"
+version = "1.9.8"
 
 from tkinter import ttk
 from tkinter.ttk import *
@@ -89,7 +89,7 @@ def login():
 
                 t1.heading('numbat', text='Batterie')
 
-                t1.heading('pourcent', text='% de batterie restant')
+                t1.heading('pourcent', text='Batterie restant')
 
                 t1.heading('cycle', text='Nombre de cycle')
 
@@ -104,7 +104,7 @@ def login():
                         stype = column['Sous-type de vol']
                         temps = column['Temps de vol']
                         numbat = column['Batterie']
-                        pourcent = column['% de batterie restant']
+                        pourcent = column['Batterie restant']
                         cycle = column['Nombre de cycle']
                         t1.insert("", 0, values=(date, numdrone, type, stype, temps, numbat, pourcent, cycle))
 

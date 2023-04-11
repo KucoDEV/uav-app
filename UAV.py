@@ -3,7 +3,7 @@
 # (c) Copyright, KucoDEV 2022-2023
 # Required PIP packages: requests, tkcalendar
 
-version = "1.9.4"
+version = "1.9.5"
 
 from tkinter import ttk
 from tkinter.ttk import *
@@ -283,7 +283,7 @@ def login():
                 clrmfd.bind('<<ComboboxSelected>>') 
                 clrmfd.pack()
 
-                Label(framelist, text="Clermont-Ferrand:").pack()
+                Label(framelist, text="\nClermont-Ferrand:").pack()
                 clrmfd = ttk.Combobox(framelist, textvariable=clent)
                 clrmfd['values'] = ("ppichotmoise", 
                    "mpichotmoise")
@@ -292,7 +292,7 @@ def login():
                 clrmfd.bind('<<ComboboxSelected>>') 
                 clrmfd.pack()
                 
-                Label(framelist, text="Lyon:").pack()
+                Label(framelist, text="\nLyon:").pack()
                 lyon = ttk.Combobox(framelist, textvariable=lnent)
                 lyon['values'] = ("Aucun")
                 lyon['state'] = 'readonly'
@@ -300,7 +300,7 @@ def login():
                 lyon.bind('<<ComboboxSelected>>') 
                 lyon.pack()
                 
-                Label(framelist, text="Grenoble:").pack()
+                Label(framelist, text="\nGrenoble:").pack()
                 grnb = ttk.Combobox(framelist, textvariable=gbent)
                 grnb['values'] = ("Aucun")
                 grnb['state'] = 'readonly'

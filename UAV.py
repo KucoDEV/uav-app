@@ -21,7 +21,8 @@ def login():
         login_screen.overrideredirect(True)
         login_screen.geometry("300x250")
         login_screen.resizable(False, False)
-        Label(text="\n\n\n\n\n\n\n\n\n\n\n\n\n").pack()
+        vvv = Label(text="Version: {version}ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ\n\n\n\n\n\n\n\n\n\n\n\n")
+        vvv.pack()
         Label(login_screen, text="Mettre les informations de votre compte").pack()
         Label(login_screen, text="").pack()
  
@@ -43,7 +44,6 @@ def login():
         password_login_entry.pack()
         Label(login_screen, text="").pack() 
         Button(login_screen, text="Se connecter", width=10, height=1, command = login_verify).pack()
-        Label(text=f"\n\n\nㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤVersion: {version}").pack()
 
         login_screen.mainloop()
 

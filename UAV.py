@@ -3,7 +3,7 @@
 # (c) Copyright, KucoDEV 2022-2023
 # Required PIP packages: requests, tkcalendar
 
-version = "1.9.3"
+version = "1.9.4"
 
 from tkinter import ttk
 from tkinter.ttk import *
@@ -11,6 +11,7 @@ from tkinter import *
 from tkcalendar import *
 import csv
 import requests
+import webbrowser
 
 def login():
     def connect():
@@ -401,7 +402,7 @@ def delete_user_not_found_screen():
     user_not_found_screen.destroy()
 
 def update():
-    input("Mon reuf, met moi a jour stp")
+    webbrowser.open("https://github.com/KucoDEV/uav-app")
 
 r = requests.get(f"https://db.beinguzeless.repl.co/v1/version?version")
 data = r.json()

@@ -1,5 +1,5 @@
 # Fait par "Mathéo PICHOT-MOÏSE" alias "Kuco"
-# Version actuelle: 1.9
+# Version actuelle: 1.9.1
 # https://github.com/KucoDEV
 # (c) Copyright, KucoDEV 2022-2023
 # Required PIP packages: requests, tkcalendar
@@ -19,7 +19,7 @@ def login():
         login_screen.overrideredirect(True)
         login_screen.geometry("300x250")
         login_screen.resizable(False, False)
-        Label(text="\n\n\n\n\n\n\n\n\n\n\n\n\n")
+        Label(text="\n\n\n\n\n\n\n\n\n\n\n\n\n").pack()
         Label(login_screen, text="Mettre les informations de votre compte").pack()
         Label(login_screen, text="").pack()
  
@@ -159,10 +159,10 @@ def login():
                             file = csv.DictWriter(fichier, fieldnames=nom_colonnes)
                             file.writerow({'Date': f'{a}','Drone': f'{b}', 'Type': f'{c}', 'Sous-type': f'{d}','Temps': f'{y}', 'Batterie': f'{e}','%Batterie': f'{f}%','Cycle': f'{g}'})
                             oui = Label(framenew, text="Les données ont bien été envoyer !", fg="green")
-                            oui.grid(row=9, column=1, columnspan=2)
+                            oui.grid(row=11, column=1, columnspan=2)
                     except:
                         non = Label(framenew, text="Je n'ai pas réussie à envoyer les données !", fg="red")
-                        non.grid(row=9, column=1, columnspan=2)
+                        non.grid(row=11, column=1, columnspan=2)
                         
                 def leave():
                     new.destroy()
@@ -222,7 +222,7 @@ def login():
                 dr = Label(framenew, text="Temps de vol").grid(row=6, column=0)
                 entry_y = Entry(framenew)
                 entry_y.grid(row=6, column=1)
-                drr = Label(framenew, text="Format: 1h2m3s").grid(row=6, column=2)
+                drr = Label(framenew, text="- (Format: 1h2m3s)").grid(row=6, column=2)
 
                 ba = Label(framenew, text="Numéro de la batterie").grid(row=7, column=0)
                 entry_e = Entry(framenew)
@@ -231,7 +231,7 @@ def login():
                 pb = Label(framenew, text="% de batterie restant").grid(row=8, column=0)
                 entry_f = Entry(framenew)
                 entry_f.grid(row=8, column=1)
-                drr = Label(framenew, text="Format: 50%").grid(row=8, column=2)
+                drr = Label(framenew, text="- (Ne pas indiquer le signe %)").grid(row=8, column=2)
 
                 pb = Label(framenew, text="Nombre de cycle").grid(row=9, column=0)
                 entry_g = Entry(framenew)

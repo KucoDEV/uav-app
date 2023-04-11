@@ -21,7 +21,7 @@ def login():
         login_screen.overrideredirect(True)
         login_screen.geometry("300x250")
         login_screen.resizable(False, False)
-        vvv = Label(text=f"\nVersion: {version}ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ\n\n\n\n\n\n\n\n\n\n\n").pack()
+        vvv = Label(text=f"\nVersion: {version}ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ\n\n\n\n\n\n\n\n\n\n\n")
         Label(login_screen, text="Vueillez renseigner les informations de votre compte").pack()
         Label(login_screen, text="").pack()
  
@@ -75,7 +75,7 @@ def login():
                 menufichier.add_command(label="Retour", command=leave)
                 menufichier.bind_all("<Control-r>", lambda x: leave())
 
-                t1 = Treeview(framestats, columns=('date', 'numdrone', 'type', 'stype'))
+                t1 = Treeview(framestats, columns=('date', 'numdrone', 'type', 'stype', 'temps', 'numbat', 'pourcent', 'cycle'))
 
                 t2 = Treeview(framestats, columns=('temps', 'numbat', 'pourcent', 'cycle'))
 
@@ -87,17 +87,15 @@ def login():
 
                 t1.heading('stype', text='Sous-type de vol')
 
-                t2.heading('temps', text='Temps de vol')
+                t1.heading('temps', text='Temps de vol')
 
-                t2.heading('numbat', text='Batterie')
+                t1.heading('numbat', text='Batterie')
 
-                t2.heading('pourcent', text='% de batterie restant')
+                t1.heading('pourcent', text='% de batterie restant')
 
-                t2.heading('cycle', text='Nombre de cycle')
+                t1.heading('cycle', text='Nombre de cycle')
 
                 t1['show'] = 'headings'
-
-                t2['show'] = 'headings'
 
                 with open('données.csv') as f:
                     reader = csv.DictReader(f, delimiter=',')
@@ -110,12 +108,9 @@ def login():
                         numbat = column['Batterie']
                         pourcent = column['% de batterie restant']
                         cycle = column['Nombre de cycle']
-                        t1.insert("", 0, values=(date, numdrone, type, stype))
-                        t2.insert("", 0, values=(temps, numbat, pourcent, cycle))
+                        t1.insert("", 0, values=(date, numdrone, type, stype, temps, numbat, pourcent, cycle))
 
                 t1.grid(row=2, column=0)
-
-                t2.grid(row=3, column=0)
 
                 framestats.pack(expand=YES)
                         

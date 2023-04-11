@@ -3,7 +3,7 @@
 # (c) Copyright, KucoDEV 2022-2023
 # Required PIP packages: requests, tkcalendar
 
-version = "1.9.5"
+version = "1.9.6"
 
 from tkinter import ttk
 from tkinter.ttk import *
@@ -43,6 +43,7 @@ def login():
         password_login_entry.pack()
         Label(login_screen, text="").pack() 
         Button(login_screen, text="Se connecter", width=10, height=1, command = login_verify).pack()
+        Label(text=f"\n\n\nㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤVersion: {version}").pack()
 
         login_screen.mainloop()
 
@@ -258,8 +259,10 @@ def login():
 
                 framelist = Frame(list)
 
-                nb_user = 2
-                Label(framelist, text=f"Il y a un total de {nb_user} utilisateurs\nSur 3 villes différentes\n\n", fg="blue").pack()
+                r = requests.get(f"https://db.beinguzeless.repl.co/v1/list")
+                data = r.json()
+                total = data['total']
+                Label(framelist, text=f"Il y a un total de {total} utilisateurs\nSur 3 villes différentes\n\n", fg="blue").pack()
                 Label(framelist, text="\n\n\n")
                 
                 menubar = Menu(list)
@@ -276,8 +279,7 @@ def login():
 
                 Label(framelist, text="Super utilisateurs:").pack()
                 clrmfd = ttk.Combobox(framelist, textvariable=sadm)
-                clrmfd['values'] = ("mpichotmoise", 
-                   "ppichotmoise")
+                clrmfd['values'] = data['s-users']
                 clrmfd['state'] = 'readonly'
                 clrmfd.current(0) 
                 clrmfd.bind('<<ComboboxSelected>>') 
@@ -285,8 +287,7 @@ def login():
 
                 Label(framelist, text="\nClermont-Ferrand:").pack()
                 clrmfd = ttk.Combobox(framelist, textvariable=clent)
-                clrmfd['values'] = ("ppichotmoise", 
-                   "mpichotmoise")
+                clrmfd['values'] = data['clermont-users']
                 clrmfd['state'] = 'readonly'
                 clrmfd.current(0) 
                 clrmfd.bind('<<ComboboxSelected>>') 
@@ -294,7 +295,7 @@ def login():
                 
                 Label(framelist, text="\nLyon:").pack()
                 lyon = ttk.Combobox(framelist, textvariable=lnent)
-                lyon['values'] = ("Aucun")
+                lyon['values'] = data['lyon-users']
                 lyon['state'] = 'readonly'
                 lyon.current(0) 
                 lyon.bind('<<ComboboxSelected>>') 
@@ -302,7 +303,7 @@ def login():
                 
                 Label(framelist, text="\nGrenoble:").pack()
                 grnb = ttk.Combobox(framelist, textvariable=gbent)
-                grnb['values'] = ("Aucun")
+                grnb['values'] = data['grenoble-users']
                 grnb['state'] = 'readonly'
                 grnb.current(0) 
                 grnb.bind('<<ComboboxSelected>>') 
@@ -342,6 +343,9 @@ def login():
             if perm == "admin":
                 menuadm = Menu(menubar,tearoff=0)
                 menuadm.add_command(label="Tout les utilisateurs", command=list_users)
+                menuadm.add_separator()
+                menuadm.add_command(label="Ajouter un utilisateur", command=list_users)
+                menuadm.add_command(label="Supprimer un utilisateur", command=list_users)
                 menubar.bind_all("<Control-a>", lambda x: list_users())
                 menubar.add_cascade(label="Administration", menu=menuadm)
 

@@ -3,7 +3,7 @@
 # (c) Copyright, KucoDEV 2022-2023
 # Required PIP packages: requests, tkcalendar
 
-version = "1.9.8"
+version = "1.9.9"
 
 from tkinter import ttk
 from tkinter.ttk import *
@@ -21,7 +21,7 @@ def login():
         login_screen.overrideredirect(True)
         login_screen.geometry("300x250")
         login_screen.resizable(False, False)
-        Label(text=f"\nVersion: {version}ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ\n\n\n\n\n\n\n\n\n\n\n").pack()
+        Label(text=f"\nVersion: {version}ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ\n\n\n\n\n\n\n\n\n\n\n")
         Label(login_screen, text="Veuillez renseigner les informations de votre compte").pack()
         Label(login_screen, text="").pack()
  
@@ -95,7 +95,17 @@ def login():
 
                 t1['show'] = 'headings'
 
-                with open('données.csv') as f:
+                e = requests.get(f"https://db.beinguzeless.repl.co/v1/get?user={username1}")
+                codee = e.json()
+
+                final = codee['code']
+                final.strip('\n')
+
+                a = open(f"{username1}.csv", "w")
+                a.write(final)
+                a.close()
+
+                with open(f'{username1}.csv') as f:
                     reader = csv.DictReader(f, delimiter=',')
                     for column in reader:
                         date = column['Date']
@@ -145,16 +155,10 @@ def login():
                     f = entry_f.get()#%
                     g = entry_g.get()#cycle
 
-                    print(a + "\n" + b + "\n" + c + "\n" + d + "\n" + y + "\n" + e + "\n" + f + "\n" + g)
-
-                    nom_colonnes =['Date','Drone','Type', 'Sous-type', 'Temps','Batterie','%Batterie','Cycle']
-                    fichier = open('données.csv', 'a', newline='\n', encoding='utf-8')
                     try:
-                        with fichier:    
-                            file = csv.DictWriter(fichier, fieldnames=nom_colonnes)
-                            file.writerow({'Date': f'{a}','Drone': f'{b}', 'Type': f'{c}', 'Sous-type': f'{d}','Temps': f'{y}', 'Batterie': f'{e}','%Batterie': f'{f}%','Cycle': f'{g}'})
-                            oui = Label(framenew, text="Les données ont bien été envoyer !", fg="green")
-                            oui.grid(row=11, column=1, columnspan=2)
+                        r = requests.get(f"https://db.beinguzeless.repl.co/v1/{username1}?code={a},{b},{c},{d},{y},{e},{f},{g}")
+                        oui = Label(framenew, text="Les données ont bien été envoyer !", fg="green")
+                        oui.grid(row=11, column=1, columnspan=2)
                     except:
                         non = Label(framenew, text="Je n'ai pas réussie à envoyer les données !", fg="red")
                         non.grid(row=11, column=1, columnspan=2)

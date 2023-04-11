@@ -104,7 +104,7 @@ def login():
                         stype = column['Sous-type de vol']
                         temps = column['Temps de vol']
                         numbat = column['Batterie']
-                        pourcent = column['Batterie restant']
+                        pourcent = column['% de batterie restant']
                         cycle = column['Nombre de cycle']
                         t1.insert("", 0, values=(date, numdrone, type, stype, temps, numbat, pourcent, cycle))
 

@@ -1,5 +1,5 @@
 # Fait par "Mathéo PICHOT-MOÏSE" alias "Kuco"
-# Version actuelle: 1.9.1
+# Version actuelle: 1.9.2
 # https://github.com/KucoDEV
 # (c) Copyright, KucoDEV 2022-2023
 # Required PIP packages: requests, tkcalendar
@@ -222,7 +222,7 @@ def login():
                 dr = Label(framenew, text="Temps de vol").grid(row=6, column=0)
                 entry_y = Entry(framenew)
                 entry_y.grid(row=6, column=1)
-                drr = Label(framenew, text="- (Format: 1h2m3s)").grid(row=6, column=2)
+                drr = Label(framenew, text="Format: 1h2m3s                    ").grid(row=6, column=2)
 
                 ba = Label(framenew, text="Numéro de la batterie").grid(row=7, column=0)
                 entry_e = Entry(framenew)
@@ -231,7 +231,7 @@ def login():
                 pb = Label(framenew, text="% de batterie restant").grid(row=8, column=0)
                 entry_f = Entry(framenew)
                 entry_f.grid(row=8, column=1)
-                drr = Label(framenew, text="- (Ne pas indiquer le signe %)").grid(row=8, column=2)
+                drr = Label(framenew, text="Ne pas indiquer le signe %").grid(row=8, column=2)
 
                 pb = Label(framenew, text="Nombre de cycle").grid(row=9, column=0)
                 entry_g = Entry(framenew)
@@ -257,7 +257,7 @@ def login():
                 framelist = Frame(list)
 
                 nb_user = 2
-                Label(framelist, text=f"J'ai trouver {nb_user} utilisateurs\ndans mes base de données.\n\n", fg="blue").pack()
+                Label(framelist, text=f"Il y a un total de {nb_user} utilisateurs\nSur 3 villes différentes\n\n", fg="blue").pack()
                 Label(framelist, text="\n\n\n")
                 
                 menubar = Menu(list)
@@ -267,15 +267,24 @@ def login():
                 menufichier.add_command(label="Retour", command=leave)
                 menufichier.bind_all("<Control-r>", lambda x: leave())
 
+                sadm = StringVar()
                 clent = StringVar()
                 lnent = StringVar()
                 gbent = StringVar()
 
+                Label(framelist, text="Super utilisateurs:").pack()
+                clrmfd = ttk.Combobox(framelist, textvariable=sadm)
+                clrmfd['values'] = ("mpichotmoise", 
+                   "ppichotmoise")
+                clrmfd['state'] = 'readonly'
+                clrmfd.current(0) 
+                clrmfd.bind('<<ComboboxSelected>>') 
+                clrmfd.pack()
+
                 Label(framelist, text="Clermont-Ferrand:").pack()
                 clrmfd = ttk.Combobox(framelist, textvariable=clent)
-                clrmfd['values'] = ("Utilisateur", 
-                   "mpichotmoise", 
-                   "ppichotmoise")
+                clrmfd['values'] = ("ppichotmoise", 
+                   "mpichotmoise")
                 clrmfd['state'] = 'readonly'
                 clrmfd.current(0) 
                 clrmfd.bind('<<ComboboxSelected>>') 
@@ -283,8 +292,7 @@ def login():
                 
                 Label(framelist, text="Lyon:").pack()
                 lyon = ttk.Combobox(framelist, textvariable=lnent)
-                lyon['values'] = ("Utilisateur",
-                   "none")
+                lyon['values'] = ("Aucun")
                 lyon['state'] = 'readonly'
                 lyon.current(0) 
                 lyon.bind('<<ComboboxSelected>>') 
@@ -292,8 +300,7 @@ def login():
                 
                 Label(framelist, text="Grenoble:").pack()
                 grnb = ttk.Combobox(framelist, textvariable=gbent)
-                grnb['values'] = ("Utilisateur",
-                   "none")
+                grnb['values'] = ("Aucun")
                 grnb['state'] = 'readonly'
                 grnb.current(0) 
                 grnb.bind('<<ComboboxSelected>>') 

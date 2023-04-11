@@ -21,7 +21,7 @@ def login():
         login_screen.overrideredirect(True)
         login_screen.geometry("300x250")
         login_screen.resizable(False, False)
-        vvv = Label(text=f"\nVersion: {version}ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ\n\n\n\n\n\n\n\n\n\n\n")
+        Label(text=f"\nVersion: {version}ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ\n\n\n\n\n\n\n\n\n\n\n").pack()
         Label(login_screen, text="Vueillez renseigner les informations de votre compte").pack()
         Label(login_screen, text="").pack()
  
@@ -76,8 +76,6 @@ def login():
                 menufichier.bind_all("<Control-r>", lambda x: leave())
 
                 t1 = Treeview(framestats, columns=('date', 'numdrone', 'type', 'stype', 'temps', 'numbat', 'pourcent', 'cycle'))
-
-                t2 = Treeview(framestats, columns=('temps', 'numbat', 'pourcent', 'cycle'))
 
                 t1.heading('date', text='Date (M/J/A)')
 

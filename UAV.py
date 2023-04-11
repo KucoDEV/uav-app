@@ -22,7 +22,7 @@ def login():
         login_screen.geometry("300x250")
         login_screen.resizable(False, False)
         Label(text=f"\nVersion: {version}ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ\n\n\n\n\n\n\n\n\n\n\n").pack()
-        Label(login_screen, text="Vueillez renseigner les informations de votre compte").pack()
+        Label(login_screen, text="Veuillez renseigner les informations de votre compte").pack()
         Label(login_screen, text="").pack()
  
         global username_verify

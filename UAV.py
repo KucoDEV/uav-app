@@ -352,13 +352,13 @@ def login():
             
             name = data['nom']
 
-            bvn = Label(frameapp, text=f"\n\\n\n\nn\n\n\n\n\n\n\nBienvenue {name} sur votre compte !")
+            bvn = Label(frameapp, text=f"\n\n\n\n\n\n\n\n\n\n\n\n\nBienvenue {name} sur votre compte !")
             bvn.grid(row=2, column=1)
             nav1 = Label(frameapp, text="Allez dans le menu de navigation pour inscrire ")
             nav1.grid(row=3, column=1)
             nav2 = Label(frameapp, text="vos différentes données ou les étudier")
             nav2.grid(row=4, column=1)
-            nav3 = Label(frameapp, text=f"\n\n\n\n\n\n\n\n\n\n\n\nㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤVersion: {version}")
+            nav3 = Label(frameapp, text=f"\n\n\n\n\n\n\n\n\nㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤVersion: {version}")
             nav3.grid(row=10, column=1)
 
 

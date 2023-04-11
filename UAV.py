@@ -1,8 +1,9 @@
 # Fait par "Mathéo PICHOT-MOÏSE" alias "Kuco"
-# Version actuelle: 1.9.2
 # https://github.com/KucoDEV
 # (c) Copyright, KucoDEV 2022-2023
 # Required PIP packages: requests, tkcalendar
+
+version = "1.9.3"
 
 from tkinter import ttk
 from tkinter.ttk import *
@@ -398,5 +399,13 @@ def delete_password_not_recognised():
  
 def delete_user_not_found_screen():
     user_not_found_screen.destroy()
- 
-login()
+
+def update():
+    input("Mon reuf, met moi a jour stp")
+
+r = requests.get(f"https://db.beinguzeless.repl.co/v1/version?version")
+data = r.json()
+if version == data['version']:
+    login()
+else:
+    update()

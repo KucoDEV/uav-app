@@ -21,8 +21,7 @@ def login():
         login_screen.overrideredirect(True)
         login_screen.geometry("300x250")
         login_screen.resizable(False, False)
-        vvv = Label(text=f"\nVersion: {version}ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ\n\n\n\n\n\n\n\n\n\n\n")
-        vvv.pack()
+        vvv = Label(text=f"\nVersion: {version}ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ\n\n\n\n\n\n\n\n\n\n\n").pack()
         Label(login_screen, text="Vueillez renseigner les informations de votre compte").pack()
         Label(login_screen, text="").pack()
  
@@ -359,6 +358,8 @@ def login():
             nav1.grid(row=3, column=1)
             nav2 = Label(frameapp, text="vos différentes données ou les étudier")
             nav2.grid(row=4, column=1)
+            nav3 = Label(frameapp, text=f"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤVersion: {version}")
+            nav3.grid(row=10, column=1)
 
 
             frameapp.pack(expand=YES)

@@ -3,7 +3,7 @@
 # (c) Copyright, KucoDEV 2022-2023
 # Required PIP packages: requests, tkcalendar
 
-version = "1.9.9"
+version = "1.10"
 
 from tkinter import ttk
 from tkinter.ttk import *
@@ -21,7 +21,7 @@ def login():
         login_screen.overrideredirect(True)
         login_screen.geometry("300x250")
         login_screen.resizable(False, False)
-        Label(text=f"\nVersion: {version}ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ\n\n\n\n\n\n\n\n\n\n\n").pack()
+        Label(text=f"\nVersion: {version}ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ\n\n\n\n\n\n\n\n\n\n\n")
         Label(login_screen, text="Veuillez renseigner les informations de votre compte").pack()
         Label(login_screen, text="").pack()
  
@@ -309,6 +309,38 @@ def login():
 
                 list.mainloop()
             
+            def add_users():
+                def send():
+                    a = entry_a.get()
+                    try:
+                        b = requests.get(f"https://db.beinguzeless.repl.co/v1/add?user={a}")
+                        oui = Label(frameadd, text=f"Une demande a été envoyer pour créer l'utilisateur '{a}' !", fg="green")
+                        oui.grid(row=3, column=1, columnspan=2)
+                    except:
+                        non = Label(frameadd, text="Je n'ai pas réussie à faire une demande !", fg="red")
+                        non.grid(row=3, column=1, columnspan=2)
+                    
+
+                add = Tk()
+                add.overrideredirect(True)
+                w, h = add.winfo_screenwidth(), add.winfo_screenheight()
+                add.geometry("%dx%d" % (w, h))
+                add.resizable(False, False)
+
+                frameadd = Frame(add)
+
+                user = Label(frameadd, text="Nom d'utilisateur")
+                user.grid(row=1, column=0)
+                entry_a = Entry(frameadd)
+                entry_a.grid(row=1, column=1)
+
+                btn = Button(frameadd, text="Envoyer", command=send)
+                btn.grid(row=2, column=0, columnspan=2, pady=20)
+
+                frameadd.pack(expand=YES)
+
+                add.mainloop()
+
             def leave():
                 root.destroy()
 
@@ -340,7 +372,7 @@ def login():
                 menuadm = Menu(menubar,tearoff=0)
                 menuadm.add_command(label="Tout les utilisateurs", command=list_users)
                 menuadm.add_separator()
-                menuadm.add_command(label="Ajouter un utilisateur", command=list_users)
+                menuadm.add_command(label="Ajouter un utilisateur", command=add_users)
                 menuadm.add_command(label="Supprimer un utilisateur", command=list_users)
                 menubar.bind_all("<Control-a>", lambda x: list_users())
                 menubar.add_cascade(label="Administration", menu=menuadm)

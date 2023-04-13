@@ -1,9 +1,9 @@
 # Fait par "Mathéo PICHOT-MOÏSE" alias "Kuco"
 # https://github.com/KucoDEV
 # (c) Copyright, KucoDEV 2022-2023
-# Required PIP packages: requests, tkcalendar, datetime
+# Required PIP packages: requests, tkcalendar
 
-version = "1.11"
+version = "1.12"
 
 from tkinter import ttk
 from tkinter.ttk import *
@@ -190,8 +190,8 @@ def login():
                 dr = Label(framenew, text="Numéro de drone").grid(row=3, column=0)
                 entry_b = StringVar()
                 entry_bb = ttk.Combobox(framenew, textvariable=entry_b)
-                entry_bb['values'] = ("Drône 1", 
-                            "Drône 2")
+                entry_bb['values'] = ("Drone 1", 
+                            "Drone 2")
                 entry_bb['state'] = 'readonly'
                 entry_bb.current(0) 
                 entry_bb.bind('<<ComboboxSelected>>')
@@ -200,8 +200,8 @@ def login():
                 dr = Label(framenew, text="Type de vol").grid(row=4, column=0)
                 entry_d = StringVar()
                 entry_dd = ttk.Combobox(framenew, textvariable=entry_d)
-                entry_dd['values'] = ("Entraînement", 
-                            "Opération",
+                entry_dd['values'] = ("Entrainement", 
+                            "Operation",
                             "Autres")
                 entry_dd['state'] = 'readonly'
                 entry_dd.current(0) 

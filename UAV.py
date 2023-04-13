@@ -1,9 +1,9 @@
 # Fait par "Mathéo PICHOT-MOÏSE" alias "Kuco"
 # https://github.com/KucoDEV
 # (c) Copyright, KucoDEV 2022-2023
-# Required PIP packages: requests, tkcalendar
+# Required PIP packages: requests, tkcalendar, datetime
 
-version = "1.10"
+version = "1.11"
 
 from tkinter import ttk
 from tkinter.ttk import *
@@ -180,9 +180,9 @@ def login():
                 menubar.add_cascade(label="Navigation", menu=menufichier)
                 menufichier.add_command(label="Retour", command=leave)
                 menufichier.bind_all("<Control-r>", lambda x: leave())
-                        
+
                 da = Label(framenew, text="Date").grid(row=1, column=0)
-                cal = Calendar(framenew, selectmode="day", year=2023, month=4, day=9)
+                cal = Calendar(framenew, selectmode="day", year=2023, month=4, day=1)
                 cal.grid(row=1, column=1)
 
                 ffff = Label(framenew, text=" ").grid(row=2, column=0)
@@ -221,7 +221,7 @@ def login():
                 dr = Label(framenew, text="Temps de vol").grid(row=6, column=0)
                 entry_y = Entry(framenew)
                 entry_y.grid(row=6, column=1)
-                drr = Label(framenew, text="Format: 1h2m3s                    ").grid(row=6, column=2)
+                drr = Label(framenew, text="Format: heures:minutes:secondes").grid(row=6, column=2)
 
                 ba = Label(framenew, text="Numéro de la batterie").grid(row=7, column=0)
                 entry_e = Entry(framenew)
@@ -327,6 +327,16 @@ def login():
                 add.geometry("%dx%d" % (w, h))
                 add.resizable(False, False)
 
+                def quit():
+                    add.destroy()
+
+                menubar = Menu(add)
+                add.config(menu=menubar)
+                menufichier = Menu(menubar,tearoff=0)
+                menubar.add_cascade(label="Navigation", menu=menufichier)
+                menufichier.add_command(label="Retour", command=quit)
+                menufichier.bind_all("<Control-r>", lambda x: quit())
+                
                 frameadd = Frame(add)
 
                 user = Label(frameadd, text="Nom d'utilisateur")
@@ -340,6 +350,45 @@ def login():
                 frameadd.pack(expand=YES)
 
                 add.mainloop()
+
+            def download():
+                def envoyer():
+                    try:
+                        b = requests.get(f"https://db.beinguzeless.repl.co/v1/download")
+                        stat = b.json()
+                        oui = Label(framedll, text=f"Téléchargement terminé !\nRegardez dans votre dossier téléchargement de votre appareil\npour trouver votre fichier.", fg="green")
+                        oui.grid(row=4, column=0)
+                        f = open("données_de_vol.csv", "w")
+                        f.write(stat['code'])
+                    except:
+                        non = Label(framedll, text="Je n'ai pas réussie à télécharger !", fg="red")
+                        non.grid(row=4, column=1)                    
+
+                dll = Tk()
+                dll.overrideredirect(True)
+                w, h = dll.winfo_screenwidth(), dll.winfo_screenheight()
+                dll.geometry("%dx%d" % (w, h))
+                dll.resizable(False, False)
+
+                def out():
+                    dll.destroy()
+
+                menubar = Menu(dll)
+                dll.config(menu=menubar)
+                menufichier = Menu(menubar,tearoff=0)
+                menubar.add_cascade(label="Navigation", menu=menufichier)
+                menufichier.add_command(label="Retour", command=out)
+                menufichier.bind_all("<Control-r>", lambda x: out())
+
+                framedll = Frame(dll)
+                
+                Label(framedll, text="Voulez-vous télécharger les données ?").grid(row=1, column=0)
+
+                Button(framedll, text="Télécharger", command=envoyer).grid(row=2, column=0)
+
+                framedll.pack(expand=YES)
+
+                dll.mainloop()
 
             def leave():
                 root.destroy()
@@ -372,8 +421,9 @@ def login():
                 menuadm = Menu(menubar,tearoff=0)
                 menuadm.add_command(label="Tout les utilisateurs", command=list_users)
                 menuadm.add_separator()
-                menuadm.add_command(label="Ajouter un utilisateur", command=add_users)
-                menuadm.add_command(label="Supprimer un utilisateur", command=list_users)
+                menuadm.add_command(label="Nouvelle utilisateur", command=add_users)
+                menuadm.add_separator()
+                menuadm.add_command(label="Télécharger les données", command=download)
                 menubar.bind_all("<Control-a>", lambda x: list_users())
                 menubar.add_cascade(label="Administration", menu=menuadm)
 

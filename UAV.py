@@ -314,19 +314,7 @@ def login():
 
                 framelist.pack(expand=YES)
 
-                list.mainloop()
-            
-            def add_users():
-                def send():
-                    a = entry_a.get()
-                    try:
-                        b = requests.get(f"https://db.beinguzeless.repl.co/v1/add?user={a}")
-                        oui = Label(frameadd, text=f"Une demande a été envoyer pour créer l'utilisateur '{a}' !", fg="green")
-                        oui.grid(row=3, column=1, columnspan=2)
-                    except:
-                        non = Label(frameadd, text="Je n'ai pas réussie à faire une demande !", fg="red")
-                        non.grid(row=3, column=1, columnspan=2)
-                    
+                list.mainloop()                    
 
                 add = Tk()
                 add.overrideredirect(True)
@@ -427,8 +415,6 @@ def login():
             if perm == "admin":
                 menuadm = Menu(menubar,tearoff=0)
                 menuadm.add_command(label="Tout les utilisateurs", command=list_users)
-                menuadm.add_separator()
-                menuadm.add_command(label="Nouvelle utilisateur", command=add_users)
                 menuadm.add_separator()
                 menuadm.add_command(label="Télécharger les données", command=download)
                 menubar.bind_all("<Control-a>", lambda x: list_users())

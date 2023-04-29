@@ -3,12 +3,9 @@
 # (c) Copyright, KucoDEV 2022-2023
 # Required PIP packages: requests, tkcalendar
 
-try:
-    import subprocess
-    subprocess.call(["pip", "install", "requests"])
-    subprocess.call(["pip", "install", "tkcalendar"])
-except:
-    pass
+import subprocess
+subprocess.call(["pip", "install", "requests"])
+subprocess.call(["pip", "install", "tkcalendar"])
 
 version = "1.12"
 

@@ -40,4 +40,4 @@ Ce projet est un exemple éducatif et ne doit pas être utilisé pour des applic
 
 ## 📜 Licence
 
-Ce projet est sous licence MIT - voir le fichier LICENSE pour plus de détails.
+Ce projet est sous licence MIT. Vous êtes libre de le modifier et de le redistribuer.

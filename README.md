@@ -1,65 +1,43 @@
-<div align="center">
+# ✈️ UAV
 
-<a href="https://gowebly.org" target="_blank" title="Go to the Gowebly CLI website"><img width="196px" alt="gowebly logo" src="https://raw.githubusercontent.com/gowebly/.github/main/images/gowebly-logo.svg"></a>
+## 📜 Description
 
-<a name="readme-top"></a>
+Ce projet est une application de gestion des données de vol de drones développée en Python avec une interface graphique basée sur Tkinter. Il permet l'authentification des utilisateurs, l'ajout et la consultation des données de vol, ainsi que leur téléchargement au format CSV.
 
-# The UAV APP
+## ⚡ Fonctionnalités
 
-A next-generation Python App that can be easily changed
+- Authentification des utilisateurs.
+- Interface graphique intuitive avec Tkinter.
+- Saisie et enregistrement des données de vol.
+- Affichage et gestion des statistiques des vols.
+- Exportation des données en CSV.
+- Vérification des mises à jour via GitHub.
 
-**&searr;&nbsp;&nbsp;The official documentation&nbsp;&nbsp;&swarr;**
+## 🛠️ Prérequis
 
-[English](https://github.com/KucoDEV/uav-app/blob/main/README.md)
+Assurez-vous d'avoir Python installé sur votre machine ainsi que les modules suivants :
 
-**&searr;&nbsp;&nbsp;Share the project's link to your friends&nbsp;&nbsp;&swarr;**
+```
+pip install requests tkcalendar
+```
 
-[![Share on X][x_share_img]][x_share_url]
-[![Share on Telegram][telegram_share_img]][telegram_share_url]
-[![Share on Reddit][reddit_share_img]][reddit_share_url]
+## 🚀 Installation et exécution
 
-</div>
+1. Clonez ce repository ou téléchargez le fichier `UAV.py`.
+2. Exécutez le script avec la commande :
+   ```
+   python UAV.py
+   ```
+3. Connectez-vous avec vos identifiants et accédez à l'application.
 
-## ✨ Features
+## 🔧 Mise à jour
 
-- 100% **free** and **open source**!
-- For **any** developer's level of knowledge and technical expertise, as the intelligent tool does most of the routine project setup for you, creates an understandable structure, and prepares code for use and deployment in production.
-- Enables you to **start a new python project faster**.
-- Ready-to-use auth system that can run in **any environment**.
+Si une nouvelle version est disponible, elle sera téléchargée automatiquement depuis GitHub.
 
-## ⚡️ Quick start
+## ⚠️ Avertissement
 
-First, [download](https://www.python.org/downloads/) and install **Python**. Version `3.10` (or higher) is required for the code generated.
+Ce projet est un exemple éducatif et ne doit pas être utilisé pour des applications nécessitant une sécurité avancée sans modifications adaptées.
 
-Now, you can use the **UAV** without installation. Just run the python file!
+## 📜 Licence
 
-That's it! 🔥 A wonderful web application to help you create TKinter window.
-
-<div align="right">
-
-[&nwarr; Back to top](#readme-top)
-
-</div>
-
-## 🌟 Stars
-
-<picture>
-  <source srcset="https://api.star-history.com/svg?repos=KucoDEV/uav-app&type=Date&theme=dark"/>
-  <img width="100%" alt="The Gowebly CLI star history chart" src="https://api.star-history.com/svg?repos=KucoDEV/uav-app&type=Date"/>
-</picture>
-
-## ⚠ License
-
-[`The uav-app`][repo_url] is free and open-source software licensed under the [Apache 2.0 License].
-
-<!-- Repository links -->
-[repo_url]: https://github.com/KucoDEV/uav-app
-
-<!-- Social links -->
-[x_share_url]: https://x.com
-[telegram_share_url]: https://t.me
-[reddit_share_url]: https://www.reddit.com
-[x_share_img]: https://img.shields.io/badge/x_(twitter)-black?style=for-the-badge&logo=x
-[telegram_share_img]: https://img.shields.io/badge/telegram-black?style=for-the-badge&logo=telegram
-[whatsapp_share_img]: https://img.shields.io/badge/whatsapp-black?style=for-the-badge&logo=whatsapp
-[reddit_share_img]: https://img.shields.io/badge/reddit-black?style=for-the-badge&logo=reddit
+Ce projet est sous licence MIT - voir le fichier LICENSE pour plus de détails.

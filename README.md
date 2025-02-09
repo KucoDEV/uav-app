@@ -2,42 +2,42 @@
 
 ## 📜 Description
 
-Ce projet est une application de gestion des données de vol de drones développée en Python avec une interface graphique basée sur Tkinter. Il permet l'authentification des utilisateurs, l'ajout et la consultation des données de vol, ainsi que leur téléchargement au format CSV.
+This project is a drone flight data management application developed in Python with a graphical user interface based on Tkinter. It allows user authentication, adding and viewing flight data, as well as downloading them in CSV format.
 
-## ⚡ Fonctionnalités
+## ⚡ Features
 
-- Authentification des utilisateurs.
-- Interface graphique intuitive avec Tkinter.
-- Saisie et enregistrement des données de vol.
-- Affichage et gestion des statistiques des vols.
-- Exportation des données en CSV.
-- Vérification des mises à jour via GitHub.
+- User authentication.
+- Intuitive graphical interface with Tkinter.
+- Input and storage of flight data.
+- Display and management of flight statistics.
+- Export of data in CSV format.
+- Update verification via GitHub.
 
-## 🛠️ Prérequis
+## 🛠️ Prerequisites
 
-Assurez-vous d'avoir Python installé sur votre machine ainsi que les modules suivants :
+Make sure you have Python installed on your machine as well as the following modules:
 
 ```
 pip install requests tkcalendar
 ```
 
-## 🚀 Installation et exécution
+## 🚀 Installation and Execution
 
-1. Clonez ce repository ou téléchargez le fichier `UAV.py`.
-2. Exécutez le script avec la commande :
+1. Clone this repository or download the `UAV.py` file.
+2. Run the script with the command:
    ```
    python UAV.py
    ```
-3. Connectez-vous avec vos identifiants et accédez à l'application.
+3. Log in with your credentials and access the application.
 
-## 🔧 Mise à jour
+## 🔧 Update
 
-Si une nouvelle version est disponible, elle sera téléchargée automatiquement depuis GitHub.
+If a new version is available, it will be automatically downloaded from GitHub.
 
-## ⚠️ Avertissement
+## ⚠️ Warning
 
-Ce projet est un exemple éducatif et ne doit pas être utilisé pour des applications nécessitant une sécurité avancée sans modifications adaptées.
+This project is an educational example and should not be used for applications requiring advanced security without appropriate modifications.
 
-## 📜 Licence
+## 📜 License
 
-Ce projet est sous licence MIT. Vous êtes libre de le modifier et de le redistribuer.
+This project is licensed under the MIT license. You are free to modify and redistribute it.
